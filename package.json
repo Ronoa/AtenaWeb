@@ -1,0 +1,106 @@
+{
+  "name": "templatemain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "crassa start",
+    "build": "crassa build && crassa server-build",
+    "dev": "crassa dev",
+    "server:build": "crassa server-build",
+    "g": "crassa g",
+    "lint": "crassa lint",
+    "count": "crassa count-lines",
+    "start:dev": "crassa start-dev",
+    "test": "crassa test --env=jsdom",
+    "lint-staged": "lint-staged"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "crassa": {
+    "displayName": "templateMain",
+    "aliases": {
+      "utils": "./src/utils",
+      "lib": "./src/lib",
+      "reducers": "./src/reducers",
+      "sagas": "./src/sagas",
+      "components": "./src/components",
+      "containers": "./src/containers",
+      "api": "./src/api"
+    }
+  },
+  "_moduleAliases": {
+    "utils": "./src/utils",
+    "lib": "./src/lib",
+    "reducers": "./src/reducers",
+    "sagas": "./src/sagas",
+    "components": "./src/components",
+    "containers": "./src/containers",
+    "api": "./src/api"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "prod.js",
+      "dev.js"
+    ],
+    "moduleNameMapper": {
+      "^utils$": "<rootDir>/src/utils",
+      "^utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^lib$": "<rootDir>/src/lib",
+      "^lib/(.*)$": "<rootDir>/src/lib/$1",
+      "^reducers$": "<rootDir>/src/reducers",
+      "^reducers/(.*)$": "<rootDir>/src/reducers/$1",
+      "^sagas$": "<rootDir>/src/sagas",
+      "^sagas/(.*)$": "<rootDir>/src/sagas/$1",
+      "^components$": "<rootDir>/src/components",
+      "^components/(.*)$": "<rootDir>/src/components/$1",
+      "^containers$": "<rootDir>/src/containers",
+      "^containers/(.*)$": "<rootDir>/src/containers/$1",
+      "^api$": "<rootDir>/src/api",
+      "^api/(.*)$": "<rootDir>/src/api/$1"
+    },
+    "resolver": null
+  },
+  "dependencies": {
+    "@emotion/react": "11.9.0",
+    "@emotion/styled": "11.8.1",
+    "@hot-loader/react-dom": "17.0.0",
+    "@loadable/component": "5.15.2",
+    "@material-ui/core": "4.12.4",
+    "@mui/icons-material": "5.8.4",
+    "@mui/material": "5.8.6",
+    "@mui/styles": "5.6.2",
+    "axios": "0.21.0",
+    "clsx": "1.1.1",
+    "connected-react-router": "6.8.0",
+    "crassa": "1.2.6",
+    "extensible-duck": "ghondar/extensible-duck",
+    "firebase": "9.6.7",
+    "history": "4.10.1",
+    "js-cookie": "2.2.1",
+    "react-hot-loader": "4.13.0",
+    "react-router": "6.3.0",
+    "react-router-dom": "6.3.0",
+    "redux-logger": "3.0.6"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.18.6",
+    "@testing-library/react": "11.1.0",
+    "redux-devtools": "3.7.0",
+    "redux-devtools-dock-monitor": "1.2.0",
+    "redux-devtools-log-monitor": "2.1.0"
+  },
+   
+  "lint-staged": {
+    "{src,server}/**/*.js": [
+      "eslint --ext .js --fix"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
