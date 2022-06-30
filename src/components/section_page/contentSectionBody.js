@@ -11,6 +11,7 @@ export default function ContentSectionBody({
   colorSecction = '',
   iscontentBgImage = false,
   isTopDivider = false,
+  isNonePadding = false,
   iscontentBgImageTwo = false,
 }) {
   const classes = useStyles()
@@ -45,7 +46,13 @@ export default function ContentSectionBody({
         </div>
       ) : null}
       <div className={classes.contentSectionWhitebody}>
-        <div className={classes.sectionBody}>{sectionRender}</div>
+        <div
+          className={clsx(classes.sectionBody, {
+            [classes.sectionBodyNonePadding]: isNonePadding,
+          })}
+        >
+          {sectionRender}
+        </div>
       </div>
     </Paper>
   )
@@ -133,9 +140,17 @@ const useStyles = makeStyles((theme) => ({
     // marginLeft  : 'auto',
     // marginRight : 'auto'
   },
+  sectionBodyNonePadding: {
+    position: 'relative',
+    padding: 0,
+  },
   '@media (max-width: 45.75em)': {
     sectionBody: {
       padding: theme.spacing(0, 2.5),
+      textjustify: 'distribute',
+    },
+    sectionBodyNonePadding: {
+      padding: theme.spacing(0, 0.5),
       textjustify: 'distribute',
     },
   },

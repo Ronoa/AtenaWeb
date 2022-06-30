@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add'
 import { NavLink as RouterLink } from 'react-router-dom'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 
-const TitleSection = ({ infoSection, isbuttonAction = false }) => {
+const TitleSection = ({ infoSection, isbuttonAction = false, titleButton }) => {
   const classes = useStyles()
 
   return (
@@ -28,20 +28,20 @@ const TitleSection = ({ infoSection, isbuttonAction = false }) => {
               color='primary'
               component={RouterLink}
               startIcon={<KeyboardBackspaceIcon />}
-              to='/produts'
+              to={infoSection.pathButtonBack}
               variant='contained'
             >
-              Volver a todos los productos
+              Volver
             </Button>
           ) : (
             <Button
               color='primary'
               component={RouterLink}
               startIcon={<AddIcon />}
-              to='/produts/create'
+              to={infoSection.pathButtonPrimary}
               variant='outlined'
             >
-              Crear prodcuto
+              {infoSection.titleButtonPrimary}
             </Button>
           )}
         </div>
