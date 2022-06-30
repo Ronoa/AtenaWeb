@@ -2,9 +2,10 @@ import React from 'react'
 
 import ContentSectionBody from 'components/section_page/contentSectionBody'
 import TitleSection from 'components/section_page/titleSection'
-import TableTeacher from 'components/Teacher/TableTeachers'
+
 
 import OptionsAttendance from 'components/Attendance/OptionsAttendance'
+import TableAttendance from 'components/Attendance/TableAttendance'
 
 const titleBody = {
   title: 'Asistencia',
@@ -24,7 +25,7 @@ export default function Attendance() {
       <ContentSectionBody
         isNonePadding={true}
         isSectionTransparent={true}
-        sectionRender={<TableTeacher />}
+        sectionRender={<TableAttendance />}
       />
     </div>
   )
