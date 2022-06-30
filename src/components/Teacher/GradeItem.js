@@ -4,12 +4,13 @@ import {
   Autocomplete,
   Box,
   Divider,
+  Grid,
   IconButton,
   Paper,
   TextField,
   Typography,
 } from '@mui/material'
-
+import { styled } from '@mui/material/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { useDebounce } from 'lib/hooks'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -17,7 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 // import productDucks from 'reducers/product'
 
 import { useParams } from 'react-router'
-import GradeTeacher from './GradeTeacher'
+
 // const {
 //   creators:{
 //     updateProductLocal,
@@ -27,7 +28,16 @@ import GradeTeacher from './GradeTeacher'
 //     getProductById
 //   }
 // } = productDucks
-export default function GradeItem({}) {
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}))
+
+export default function GradeItem({ isButtonDelete = true }) {
   const classes = useStyles()
   const dispatch = useDispatch()
   // const getNewProduct = useSelector(getProductById)
@@ -64,60 +74,77 @@ export default function GradeItem({}) {
   return (
     <Box
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        width: '100%',
-        borderBottom: '2px dashed',
-        marginBottom: 1.5,
+        // display: 'flex',
+        // alignItems: 'center',
+        // width: '100%',
+        // borderBottom: '2px dashed',
+        // marginBottom: 1.5,
+        flexGrow: 1,
       }}
     >
-      <div className={classes.contentGrade}>
-        <div className={classes.groupText}>
-          <div className={classes.contentTextFlex}>
-            <Autocomplete
-              sx={{ width: '100%' }}
-              fullWidth
-              id='category'
-              onChange={(event, newValue) => {
-                setNewProduct({ ...newProduct, category: newValue })
-              }}
-              options={categorySell.map((option) => option.title)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  fullWidth={true}
-                  id='degree'
-                  label='Seleccione Grado'
-                  name='degree'
-                />
-              )}
-              size='small'
-              value={newProduct.category}
-            />
-          </div>
-          <div className={classes.contentTextFlex}>
-            <Autocomplete
-              id='partner'
-              onChange={(event, newValue) => {
-                setNewProduct({ ...newProduct, partner: newValue })
-              }}
-              options={partnerSell.map((option) => option.title)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  fullWidth={true}
-                  id='section'
-                  label='Seleccione Sección'
-                  name='section'
-                />
-              )}
-              size='small'
-              value={newProduct.partner}
-            />
+      {isButtonDelete ? (
+        <div className={classes.contentGrade}>
+          <Typography>Item </Typography>
+          <div>
+            <IconButton aria-label='delete' className={classes.margin}>
+              <DeleteIcon
+                color='error'
+                // onClick={_handleDeletePosition}
+                size='small'
+              />
+            </IconButton>
           </div>
         </div>
+      ) : null}
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        <Grid item xs={12} sm={4} md={6}>
+          <Autocomplete
+            sx={{ width: '100%' }}
+            fullWidth
+            id='category'
+            onChange={(event, newValue) => {
+              setNewProduct({ ...newProduct, category: newValue })
+            }}
+            options={categorySell.map((option) => option.title)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                fullWidth={true}
+                id='degree'
+                label='Seleccione Grado'
+                name='degree'
+              />
+            )}
+            size='small'
+            value={newProduct.category}
+          />
+        </Grid>
+        <Grid item xs={12} sm={4} md={6}>
+          <Autocomplete
+            id='partner'
+            onChange={(event, newValue) => {
+              setNewProduct({ ...newProduct, partner: newValue })
+            }}
+            options={partnerSell.map((option) => option.title)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                fullWidth={true}
+                id='section'
+                label='Seleccione Sección'
+                name='section'
+              />
+            )}
+            size='small'
+            value={newProduct.partner}
+          />
+        </Grid>
 
-        <div className={classes.contentText}>
+        <Grid item xs={12} sm={12} md={12}>
           <Autocomplete
             id='partner'
             onChange={(event, newValue) => {
@@ -136,47 +163,16 @@ export default function GradeItem({}) {
             size='small'
             value={newProduct.partner}
           />
-        </div>
-      </div>
-      <div>
-        <IconButton aria-label='delete' className={classes.margin}>
-          <DeleteIcon
-            color='error'
-            // onClick={_handleDeletePosition}
-            size='small'
-          />
-        </IconButton>
-      </div>
+        </Grid>
+      </Grid>
     </Box>
   )
 }
 
 const useStyles = makeStyles((theme) => ({
   contentGrade: {
-    width: '90%',
-  },
-  contentTextTop: {
-    marginTop: theme.spacing(2.5),
-  },
-  contenFormTop: {
-    padding: theme.spacing(3.5),
-  },
-  contenFormCenter: {
-    padding: theme.spacing(3.5),
-    marginTop: theme.spacing(5),
-  },
-  contentText: {
-    marginBottom: theme.spacing(2.5),
-  },
-  contentTextFlex: {
-    marginBottom: theme.spacing(2.5),
-    width: '50%',
-  },
-  groupText: {
     display: 'flex',
-    justifyContent: 'flex-start',
-    '& >div': {
-      marginRight: theme.spacing(2.5),
-    },
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 }))

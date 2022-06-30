@@ -1,4 +1,5 @@
 import React from 'react'
+import clsx from 'clsx'
 import { Typography, makeStyles, Button } from '@material-ui/core'
 import AddIcon from '@mui/icons-material/Add'
 import { NavLink as RouterLink } from 'react-router-dom'
@@ -8,7 +9,11 @@ const TitleSection = ({ infoSection, isbuttonAction = false, titleButton }) => {
   const classes = useStyles()
 
   return (
-    <div className={classes.contentSectionTitle}>
+    <div
+      className={clsx(classes.contentSectionTitle, {
+        [classes.contentSectionTitleNotButton]: !isbuttonAction,
+      })}
+    >
       <div className={classes.contentTitleSection}>
         <div className={classes.infotitleSection}>
           <Typography align='left' color='primary' variant='h3'>
@@ -54,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
   contentSectionTitle: {
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  contentSectionTitleNotButton: {
+    display: 'block',
+    justifyContent: 'normal',
   },
   contentTitleEnterprice: {
     // background: 'red',
