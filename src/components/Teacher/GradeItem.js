@@ -18,6 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 // import productDucks from 'reducers/product'
 
 import { useParams } from 'react-router'
+import { cursos, grado, seccion } from 'utils/dataTest'
 
 // const {
 //   creators:{
@@ -41,7 +42,7 @@ export default function GradeItem({ isButtonDelete = true }) {
   const classes = useStyles()
   const dispatch = useDispatch()
   // const getNewProduct = useSelector(getProductById)
-  const { productId } = useParams()
+
   const [newProduct, setNewProduct] = React.useState({})
   const debouncedUpdateProduct = useDebounce(newProduct, 1000)
 
@@ -53,23 +54,6 @@ export default function GradeItem({ isButtonDelete = true }) {
         typeValue == 'number' ? Number(event.target.value) : event.target.value,
     })
   }
-
-  const categorySell = [
-    { title: 'ISO/IEC Certifications', codItem: 'c1' },
-    { title: 'Cybersecurity Certifications', codItem: 'c2' },
-    { title: 'Scrum Certifications', codItem: 'c3' },
-    { title: 'DevOps Certifications', codItem: 'c4' },
-    { title: 'Other Technologies', codItem: 'c5' },
-    { title: 'Marketing Certifications', codItem: 'c6' },
-    { title: 'Agile Certifications', codItem: 'c7' },
-    { title: 'Software Certifications', codItem: 'c8' },
-  ]
-  const partnerSell = [
-    { title: 'CERTIPROF', codItem: 'p1' },
-    { title: 'CERTJOIN', codItem: 'p2' },
-    { title: 'CERTMIND', codItem: 'p3' },
-    { title: 'PEOPLE CERT', codItem: 'p4' },
-  ]
 
   return (
     <Box
@@ -109,7 +93,7 @@ export default function GradeItem({ isButtonDelete = true }) {
             onChange={(event, newValue) => {
               setNewProduct({ ...newProduct, category: newValue })
             }}
-            options={categorySell.map((option) => option.title)}
+            options={grado.map((option) => option.title)}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -129,7 +113,7 @@ export default function GradeItem({ isButtonDelete = true }) {
             onChange={(event, newValue) => {
               setNewProduct({ ...newProduct, partner: newValue })
             }}
-            options={partnerSell.map((option) => option.title)}
+            options={seccion.map((option) => option.title)}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -150,7 +134,7 @@ export default function GradeItem({ isButtonDelete = true }) {
             onChange={(event, newValue) => {
               setNewProduct({ ...newProduct, partner: newValue })
             }}
-            options={partnerSell.map((option) => option.title)}
+            options={cursos.map((option) => option.title)}
             renderInput={(params) => (
               <TextField
                 {...params}

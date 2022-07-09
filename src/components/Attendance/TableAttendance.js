@@ -11,8 +11,11 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
+
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import { Tooltip } from '@mui/material'
+import ActionsAttendace from './ActionsAttendace'
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -33,10 +36,9 @@ function Row(props) {
     <React.Fragment>
       <TableRow>
         <TableCell style={{ minWidth: 220 }}>{row.name}</TableCell>
-        <TableCell align='left'>{row.calories}</TableCell>
-        <TableCell align='right'>{row.fat}</TableCell>
-        <TableCell align='right'>{row.carbs}</TableCell>
-        <TableCell align='right'>{row.protein}</TableCell>
+        <TableCell align='right'>
+          <ActionsAttendace />
+        </TableCell>
       </TableRow>
     </React.Fragment>
   )
@@ -73,10 +75,7 @@ export default function TableAttendance() {
         <TableHead>
           <TableRow>
             <TableCell align='center'>Nombre </TableCell>
-            <TableCell align='center'>Correo</TableCell>
-            <TableCell align='center'>Especialidad</TableCell>
-            <TableCell align='right'>Grados</TableCell>
-            <TableCell align='right'>Horas</TableCell>
+            <TableCell align='center'>Accion</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
