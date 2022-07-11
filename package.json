@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "start": "crassa start",
     "build": "crassa build && crassa server-build",
@@ -63,6 +67,7 @@
     "resolver": null
   },
   "dependencies": {
+    "@mui/joy": "^5.0.0-alpha.35",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "@hot-loader/react-dom": "17.0.0",
@@ -74,15 +79,18 @@
     "axios": "0.21.0",
     "clsx": "1.1.1",
     "connected-react-router": "6.8.0",
-    "crassa": "1.2.6",
+    "moment": "^2.29.4",
+    "crassa": "1.1.2",
     "extensible-duck": "ghondar/extensible-duck",
     "firebase": "9.6.7",
     "history": "4.10.1",
+    "react-timer-hook": "^3.0.5",
     "js-cookie": "2.2.1",
     "react-hot-loader": "4.13.0",
-    "react-router": "6.3.0",
     "react-router-dom": "6.3.0",
-    "redux-logger": "3.0.6"
+    "redux-logger": "3.0.6",
+    "typescript": "4.0.5",
+    "typescript-require": "0.3.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.18.6",
@@ -91,7 +99,6 @@
     "redux-devtools-dock-monitor": "1.2.0",
     "redux-devtools-log-monitor": "2.1.0"
   },
-   
   "lint-staged": {
     "{src,server}/**/*.js": [
       "eslint --ext .js --fix"

@@ -34,12 +34,27 @@ export default function ActionsAttendace() {
             overlay
             variant='solid'
             color={color}
-            checkedIcon={<Done fontSize='xl2' />}
+            checkedIcon={
+              <Done
+                sx={{
+                  fontSize: '2rem',
+                }}
+              />
+            }
             value={color}
-            componentsProps={{ input: { 'aria-label': color } }}
+            componentsProps={{
+              input: {
+                'aria-label': color,
+                style: {
+                  'margin-left': '-30px',
+                },
+
+                // ',
+              },
+            }}
             sx={{
               '--joy-focus-outlineOffset': '4px',
-              fontSize: '2rem',
+
               '--joy-palette-focusVisible': (theme) =>
                 theme.vars.palette[color][500],
               [`& .${radioClasses.radio}`]: {
