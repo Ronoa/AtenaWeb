@@ -14,10 +14,10 @@ import { styled } from '@mui/material/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { useDebounce } from 'lib/hooks'
 import DeleteIcon from '@mui/icons-material/Delete'
+import moment from 'moment'
 // import { additionalCertifications } from 'utils/dataTest'
 // import productDucks from 'reducers/product'
 
-import { useParams } from 'react-router'
 import { cursos, grado, seccion } from 'utils/dataTest'
 
 // const {
@@ -38,9 +38,17 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }))
 
-export default function GradeItem({ isButtonDelete = true }) {
+export default function GradeItem({
+  isButtonDelete = true,
+  isReport = false,
+  changeDateSelect,
+}) {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const [dateSelect, setDateSelect] = React.useState(
+    moment(new Date()).format('YYYY/MM/DD')
+  )
+
   // const getNewProduct = useSelector(getProductById)
 
   const [newProduct, setNewProduct] = React.useState({})
@@ -53,6 +61,11 @@ export default function GradeItem({ isButtonDelete = true }) {
       [event.target.name]:
         typeValue == 'number' ? Number(event.target.value) : event.target.value,
     })
+  }
+
+  const handleChangeDate = (event) => {
+    setDateSelect(event.target.value)
+    changeDateSelect(event.target.value)
   }
 
   return (
@@ -128,7 +141,7 @@ export default function GradeItem({ isButtonDelete = true }) {
           />
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12}>
+        <Grid item xs={12} sm={!isReport ? 12 : 4} md={!isReport ? 12 : 6}>
           <Autocomplete
             id='partner'
             onChange={(event, newValue) => {
@@ -148,6 +161,22 @@ export default function GradeItem({ isButtonDelete = true }) {
             value={newProduct.partner}
           />
         </Grid>
+        {isReport ? (
+          <Grid item xs={12} sm={4} md={6}>
+            <TextField
+              id='date'
+              label='Fecha'
+              type='date'
+              size='small'
+              fullWidth={true}
+              value={dateSelect}
+              onChange={handleChangeDate}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
+        ) : null}
       </Grid>
     </Box>
   )

@@ -15,6 +15,9 @@ const Dashboard = React.lazy(() => import('containers/page/Dashboard'))
 const Teachers = React.lazy(() => import('containers/page/Teachers'))
 const TeacherCrud = React.lazy(() => import('containers/page/TeachersCrud'))
 const Attendance = React.lazy(() => import('containers/page/Attendance'))
+const ReportAttendace = React.lazy(() =>
+  import('containers/page/ReportAttendace')
+)
 
 export const ElementeRouterProtect = (componente) => {
   return (
@@ -29,14 +32,14 @@ export const optionsRoutesNavBar = [
     label: 'Dashboard',
     icon: <DashboardIcon />,
     elementComponent: ElementeRouterProtect(<Dashboard />),
-    path: '/dashboard',
+    path: '/home',
   },
-  {
-    label: 'Institucion',
-    icon: <SchoolIcon />,
-    elementComponent: null,
-    path: '/',
-  },
+  // {
+  //   label: 'Institucion',
+  //   icon: <SchoolIcon />,
+  //   elementComponent: null,
+  //   path: '/',
+  // },
   {
     label: 'Docentes',
     icon: <PeopleIcon />,
@@ -50,22 +53,23 @@ export const optionsRoutesNavBar = [
     path: '/teachers/create',
     isNotVisible: true,
   },
-  {
-    label: 'Aulas',
-    icon: <CategoryIcon />,
-    elementComponent: null,
-    path: '/',
-  },
-  {
-    label: 'Reportes',
-    icon: <BarChartIcon />,
-    elementComponent: null,
-    path: '/',
-  },
+  // {
+  //   label: 'Aulas',
+  //   icon: <CategoryIcon />,
+  //   elementComponent: null,
+  //   path: '/',
+  // },
+
   {
     label: 'Asistencia',
     icon: <FactCheckIcon />,
     elementComponent: ElementeRouterProtect(<Attendance />),
     path: '/asistencia',
+  },
+  {
+    label: 'Reportes',
+    icon: <BarChartIcon />,
+    elementComponent: ElementeRouterProtect(<ReportAttendace />),
+    path: '/report',
   },
 ]

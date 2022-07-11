@@ -51,7 +51,7 @@ const DrawerCustom = ({ isOpenDrawer, toggleDrawer }) => {
       <List component='nav'>
         {mainListItems}
         <Divider sx={{ my: 1 }} />
-        {secondaryListItems}
+        {/* {secondaryListItems} */}
       </List>
     </Drawer>
   )

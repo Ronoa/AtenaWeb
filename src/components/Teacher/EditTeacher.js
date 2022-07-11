@@ -7,13 +7,12 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { Box } from '@mui/system'
-import { useDispatch, useSelector } from 'react-redux'
+ 
+ 
 import { useDebounce } from 'lib/hooks'
 // import { additionalCertifications } from 'utils/dataTest'
 // import productDucks from 'reducers/product'
 
-import { useParams } from 'react-router'
 import GradeTeacher from './GradeTeacher'
 // const {
 //   creators:{
@@ -26,9 +25,9 @@ import GradeTeacher from './GradeTeacher'
 // } = productDucks
 export default function EditTeacher({}) {
   const classes = useStyles()
-  const dispatch = useDispatch()
+
   // const getNewProduct = useSelector(getProductById)
-  const { productId } = useParams()
+
   const [newProduct, setNewProduct] = React.useState({})
   const debouncedUpdateProduct = useDebounce(newProduct, 1000)
 
@@ -52,7 +51,7 @@ export default function EditTeacher({}) {
   // }, [ productId ])
 
   return (
-    <Box>
+    <>
       <Paper className={classes.contenFormTop} elevation={4}>
         <div className={classes.contentText}>
           <TextField
@@ -128,7 +127,7 @@ export default function EditTeacher({}) {
           />
         </div>
       </Paper>
-    </Box>
+    </>
   )
 }
 

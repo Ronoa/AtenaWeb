@@ -29,14 +29,20 @@ import moment from 'moment'
 // }
 
 function Row(props) {
-  const { row } = props
+  const { row, isReport } = props
   const [open, setOpen] = React.useState(false)
   return (
     <React.Fragment>
       <TableRow>
         <TableCell style={{ minWidth: 220 }}>{row.name}</TableCell>
         <TableCell align='right'>
-          <ActionsAttendace key={row._id} />
+          {!isReport ? (
+            <ActionsAttendace key={row._id} />
+          ) : (
+            <div style={{ lineHeight: '2', display: 'flex' }}>
+              <CircleIcon color='success' />
+            </div>
+          )}
         </TableCell>
       </TableRow>
     </React.Fragment>
@@ -67,7 +73,10 @@ Row.propTypes = {
 //   createData('Reyna Pura Abascal', 'Pura@gmail.com', 'Comunicacion', 2, 3),
 // ]
 
-export default function TableAttendance() {
+export default function TableAttendance({
+  dateSelectReport = null,
+  isReport = false,
+}) {
   return (
     <TableContainer component={Paper}>
       <div style={{ display: 'flex', 'justify-content': 'space-evenly' }}>
@@ -89,7 +98,9 @@ export default function TableAttendance() {
           <TableRow>
             <TableCell align='left'>Apellido y Nombre </TableCell>
             <TableCell align='center'>
-              {moment(new Date()).format('DD/MM/YYYY')}
+              {dateSelectReport
+                ? dateSelectReport
+                : moment(new Date()).format('DD/MM/YYYY')}
             </TableCell>
           </TableRow>
         </TableHead>
@@ -106,7 +117,7 @@ export default function TableAttendance() {
               return 0
             })
             .map((row) => (
-              <Row key={row.name} row={row} />
+              <Row key={row.name} row={row} isReport={isReport} />
             ))}
         </TableBody>
       </Table>
