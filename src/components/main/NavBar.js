@@ -8,7 +8,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 // import PersonIcon from '@mui/icons-material/Person'
 
 import {
-  Badge,
+  // Badge,
   IconButton,
   Typography,
   Menu,
@@ -97,9 +97,9 @@ const NavBar = ({ isOpenDrawer, toggleDrawer }) => {
           Atena Apps
         </Typography>
         <IconButton color='inherit'>
-          <Badge badgeContent={4} color='secondary'>
-            <NotificationsIcon />
-          </Badge>
+          {/* <Badge badgeContent={4} color='secondary'> */}
+          <NotificationsIcon />
+          {/* </Badge> */}
         </IconButton>
         <IconButton color='inherit' onClick={handleClick}>
           {/* <PersonIcon /> */}

@@ -6,8 +6,9 @@ import ListSubheader from '@mui/material/ListSubheader'
 
  
 import AssignmentIcon from '@mui/icons-material/Assignment'
-import { optionsRoutesNavBar } from 'src/routes/configRoutes'
+// import { optionsRoutesNavBar } from './routes/configRoutes'
 import { Tooltip } from '@mui/material'
+import { optionsRoutesNavBar } from '../../routes/configRoutes'
 
 export const mainListItems = (
   <React.Fragment>
