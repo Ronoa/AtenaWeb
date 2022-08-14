@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=16.0.0"
+    "node": "16.14"
   },
   "scripts": {
     "start": "crassa start",
